@@ -1,0 +1,178 @@
+/* ==========================================================================
+   PAGES
+   Page-specific styles (Home, About, Interests, Gallery, Contact)
+
+   Rules:
+   - Shared/reusable components belong in components.css
+   - Global utilities belong in globals.css
+   - Only page-specific layouts belong here
+   ========================================================================== */
+
+
+/* ==========================================================================
+   SECTION MODIFIERS
+   ========================================================================== */
+
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section--tight {
+  padding-block: var(--space-6);
+}
+
+
+/* ==========================================================================
+   HOME — FINAL CTA
+   ========================================================================== */
+
+.cta-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card {
+  position: relative;
+  overflow: hidden;
+
+  max-width: 850px;
+  margin-inline: auto;
+  padding: var(--space-7);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+
+  text-align: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(255, 215, 0, 0.15),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-primary-dark),
+      #061d17
+    );
+
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-card::before {
+  content: "";
+
+  position: absolute;
+  inset: -25%;
+
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 42px,
+      rgba(255, 255, 255, 0.03) 42px 46px
+    );
+
+  pointer-events: none;
+}
+
+.cta-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* --------------------------------------------------------------------------
+   Content
+   -------------------------------------------------------------------------- */
+
+.cta-card__title,
+.cta-card__description,
+.cta-card__actions,
+.cta-card__divider,
+.cta-card__quote {
+  margin: 0;
+}
+
+.cta-card__title {
+  color: var(--color-white);
+}
+
+.cta-card__description {
+  max-width: 42rem;
+
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.8;
+}
+
+
+/* --------------------------------------------------------------------------
+   Actions
+   -------------------------------------------------------------------------- */
+
+.cta-card__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+
+/* --------------------------------------------------------------------------
+   Divider
+   -------------------------------------------------------------------------- */
+
+.cta-card__divider {
+  width: 70px;
+  height: 3px;
+
+  border-radius: 999px;
+
+  background: var(--color-accent);
+  opacity: 0.9;
+}
+
+
+/* --------------------------------------------------------------------------
+   Quote
+   -------------------------------------------------------------------------- */
+
+.cta-card__quote {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: var(--fs-sm);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  .section--tight {
+    padding-block: var(--space-5);
+  }
+
+  .cta-card {
+    padding: var(--space-6);
+    gap: var(--space-4);
+  }
+
+  .cta-card__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-card__actions .btn {
+    width: 100%;
+  }
+}

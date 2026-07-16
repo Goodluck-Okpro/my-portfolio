@@ -1,0 +1,505 @@
+/* ==========================================================================
+   GLOBALS — Design Tokens & Base Styles
+   Precious Uba Portfolio
+   ==========================================================================
+   
+   This file is the "foundation" of the entire website's styling.
+   It sets up:
+     1. Design tokens  — reusable variables for colors, fonts, spacing, etc.
+     2. A CSS reset    — removes unwanted browser default styles.
+     3. Base styles    — simple rules for common HTML elements (body, links…).
+     4. Utility classes — small, single-purpose helper classes.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   SECTION 1 — DESIGN TOKENS  (CSS Custom Properties / Variables)
+   ==========================================================================
+   
+   ":root" targets the very top of the HTML document (the <html> element).
+   Variables defined here are available EVERYWHERE in your CSS files,
+   just like global variables in programming.
+   
+   Syntax:  --variable-name: value;
+   Usage:   color: var(--variable-name);
+   ========================================================================== */
+
+:root {
+
+  /* ── COLOR PALETTE ────────────────────────────────────────────────────── */
+
+  /* The main brand green used for headings, buttons, and accents */
+  --color-primary: #0B6E4F;
+
+  /* A darker shade of the primary green — used on hover or for depth */
+  --color-primary-dark: #084F39;
+
+  /* A slightly lighter green — used for highlights */
+  --color-primary-light: #0F8F66;
+
+  /* Near-black — used as a secondary color for backgrounds or text */
+  --color-secondary: #111111;
+
+  /* Bright gold — used for star highlights, borders, and call-to-action elements */
+  --color-accent: #FFD700;
+
+  /* Darker gold — used on hover states for accent-colored elements */
+  --color-accent-dark: #C9A700;
+
+  /* Main page background — pure white */
+  --color-bg: #FFFFFF;
+
+  /* Alternative background — light grey, used for alternating section backgrounds */
+  --color-bg-alt: #F5F5F5;
+
+  /* Default text color — very dark, nearly black */
+  --color-text: #111111;
+
+  /* Muted/secondary text color — medium grey, used for body copy and descriptions */
+  --color-text-muted: #5A5A5A;
+
+  /* A white shortcut — handy when you need pure white on dark backgrounds */
+  --color-white: #FFFFFF;
+
+  /* Border/divider color — very light grey, used for lines and card borders */
+  --color-border: #E5E5E5;
+
+  --nav-height: 76px;
+
+
+  /* ── TYPOGRAPHY ───────────────────────────────────────────────────────── */
+
+  /* Font used for headings (h1–h6) — 'Poppins' is loaded from Google Fonts */
+  /* If Poppins fails to load, the browser falls back to any generic sans-serif font */
+  --font-heading: 'Poppins', sans-serif;
+
+  /* Font used for body/paragraph text — 'Inter' is clean and very readable */
+  --font-body: 'Inter', sans-serif;
+
+  /* ── FONT SIZE SCALE ──────────────────────────────────────────────────── */
+  /* "rem" units are relative to the browser's root font size (usually 16px).
+     So 1rem = 16px, 0.75rem = 12px, 2rem = 32px, etc.
+     Using rem instead of px makes the site more accessible — it respects
+     the user's browser font-size preference. */
+
+  --fs-xs:   0.75rem;   /* Extra-small  — 12px  (labels, captions) */
+  --fs-sm:   0.875rem;  /* Small        — 14px  (secondary text) */
+  --fs-base: 1rem;      /* Base         — 16px  (normal body text) */
+  --fs-lg:   1.125rem;  /* Large        — 18px  (slightly bigger body text) */
+  --fs-xl:   1.5rem;    /* Extra-large  — 24px  (h4 size) */
+  --fs-2xl:  2rem;      /* 2x large     — 32px  (h3 size) */
+  --fs-3xl:  2.75rem;   /* 3x large     — 44px  (h2 size) */
+  --fs-4xl:  3.75rem;   /* 4x large     — 60px  (h1 size on desktop) */
+  --fs-5xl:  5rem;      /* 5x large     — 80px  (hero/display text) */
+
+
+  /* ── SPACING SCALE ────────────────────────────────────────────────────── */
+  /* These variables give you a consistent set of spacing values to use
+     for margins, paddings, and gaps — instead of picking random pixel values. */
+
+  --space-1: 0.25rem;  /* 4px  — very tight spacing (e.g., icon gap) */
+  --space-2: 0.5rem;   /* 8px  — small gap */
+  --space-3: 1rem;     /* 16px — standard internal padding */
+  --space-4: 1.5rem;   /* 24px — comfortable padding (used in containers) */
+  --space-5: 2rem;     /* 32px — medium section gap */
+  --space-6: 3rem;     /* 48px — large gap (mobile section padding) */
+  --space-7: 4rem;     /* 64px */
+  --space-8: 6rem;     /* 96px — extra-large (desktop section padding) */
+
+
+  /* ── LAYOUT ───────────────────────────────────────────────────────────── */
+
+  /* The widest the main content area will ever get — prevents long lines on big screens */
+  --container-max: 1200px;
+
+  /* Border-radius values — controls how rounded the corners of boxes are */
+  --radius-sm: 6px;   /* Slightly rounded (small chips, tags) */
+  --radius-md: 12px;  /* Moderately rounded (cards) */
+  --radius-lg: 20px;  /* Very rounded (large cards, modals) */
+
+
+  /* ── MOTION / ANIMATION ───────────────────────────────────────────────── */
+
+  /* A custom easing curve — makes animations feel snappy and natural.
+     cubic-bezier() lets you define the exact "speed curve" of a transition. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Fast transition (0.2 seconds) — for small interactions like button hovers */
+  --transition-fast: 0.2s var(--ease-out);
+
+  /* Base transition (0.35 seconds) — for things like menus and overlays */
+  --transition-base: 0.35s var(--ease-out);
+
+
+  /* ── ELEVATION (Box Shadows) ──────────────────────────────────────────── */
+  /* Shadows make elements look like they're "floating" above the page.
+     Format: offset-x  offset-y  blur-radius  color */
+
+  /* Subtle shadow — barely noticeable lift (used on small cards) */
+  --shadow-sm: 0 2px 8px rgba(17, 17, 17, 0.06);
+
+  /* Medium shadow — noticeable depth (used on hovered or featured cards) */
+  --shadow-md: 0 8px 24px rgba(17, 17, 17, 0.10);
+
+  /* Gold-tinted shadow — gives a glowing gold halo (used on accent elements) */
+  --shadow-gold: 0 8px 24px rgba(255, 215, 0, 0.25);
+
+} /* End of :root */
+
+
+/* ==========================================================================
+   SECTION 2 — CSS RESET
+   ==========================================================================
+   Different browsers (Chrome, Firefox, Safari…) have their own built-in
+   default styles. A reset removes those defaults so you start with a
+   clean, consistent slate across all browsers.
+   ========================================================================== */
+
+/* The asterisk (*) means "select EVERY element on the page".
+   ::before and ::after are "pseudo-elements" — invisible extra elements
+   that CSS can insert before/after real content (used for  effects). */
+*,
+*::before,
+*::after {
+  /* By default, browsers add an element's border and padding ON TOP of its
+     width. "border-box" changes this so that width includes border & padding.
+     Much more intuitive for layout work. */
+  box-sizing: border-box;
+
+  /* Remove default margin (the space outside an element) from everything */
+  margin: 0;
+
+  /* Remove default padding (the space inside an element) from everything */
+  padding: 0;
+}
+
+/* Styles for the <html> element (the root of the whole page) */
+html {
+  /* When you click a link that jumps to a section (e.g. #about),
+     the page scrolls smoothly instead of jumping instantly */
+  scroll-behavior: smooth;
+
+  /* Prevents iOS Safari from automatically enlarging font sizes when
+     the phone is rotated to landscape mode */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── ACCESSIBILITY: Respecting "Reduce Motion" System Preference ─────────── */
+/* Some users experience motion sickness from animations.
+   This media query detects if the user's OS has "Reduce Motion" turned on,
+   and disables or minimises all animations if so. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    /* Disable smooth scrolling — instant jump instead */
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    /* Set animations to an almost-zero duration — effectively disabling them */
+    /* !important overrides any other rule that sets these properties */
+    animation-duration: 0.01ms !important;
+
+    /* Make any looping animations play only once, then stop */
+    animation-iteration-count: 1 !important;
+
+    /* Set CSS transitions to near-zero duration */
+    transition-duration: 0.01ms !important;
+
+    /* Also disable smooth scrolling on all elements */
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ==========================================================================
+   SECTION 3 — BASE / ELEMENT STYLES
+   ==========================================================================
+   Now that the reset has wiped the slate clean, we add back sensible,
+   intentional defaults for common HTML elements.
+   ========================================================================== */
+
+/* Styles applied to the <body> — everything visible on the page */
+body {
+  /* Use the Inter font (defined above) for all body text */
+  font-family: var(--font-body);
+
+  /* Set the default text size to 1rem (16px) */
+  font-size: var(--fs-base);
+
+  /* Line height controls the vertical space between lines of text.
+     1.6 means lines are 1.6× the font size apart — good for readability */
+  line-height: 1.6;
+
+  /* Default text color — nearly black */
+  color: var(--color-text);
+
+  /* Page background — white */
+  background-color: var(--color-bg);
+
+  /* Prevent a horizontal scrollbar from appearing if content slightly overflows */
+  overflow-x: hidden;
+}
+
+/* Styles for all images (<img> tags) */
+img {
+  /* Prevent images from overflowing their container — they scale down if needed */
+  max-width: 100%;
+
+  /* By default images are "inline" elements (like text). Making them "block"
+     removes the small gap that appears underneath inline images */
+  display: block;
+}
+
+/* Styles for all hyperlinks (<a> tags) */
+a {
+  /* Remove the default blue underline from links */
+  text-decoration: none;
+
+  /* Inherit the text color from the parent element instead of the browser's
+     default blue link color */
+  color: inherit;
+}
+
+/* Styles for both unordered lists (<ul>) and ordered lists (<ol>) */
+ul,
+ol {
+  /* Remove the default bullet points (•) and numbers from lists */
+  list-style: none;
+}
+
+/* Styles for all <button> elements */
+button {
+  /* Buttons have their own font by default — this makes them use the same
+     font as the rest of the page (inherited from <body>) */
+  font-family: inherit;
+
+  /* Show the pointer cursor (hand icon) when hovering over a button,
+     so users know it's clickable */
+  cursor: pointer;
+
+  /* Remove the default grey border around buttons */
+  border: none;
+
+  /* Remove the default grey background that buttons have */
+  background: none;
+}
+
+/* Styles for text input fields and multi-line text areas */
+input,
+textarea {
+  /* Use the same font as the rest of the page (not the browser's default) */
+  font-family: inherit;
+
+  /* Use the same font size as the parent element (stops inputs from looking tiny) */
+  font-size: inherit;
+}
+
+
+/* ==========================================================================
+   SECTION 4 — TYPOGRAPHY STYLES
+   ==========================================================================
+   Rules for headings and body text.
+   ========================================================================== */
+
+/* Apply these styles to ALL heading levels at once */
+h1, h2, h3, h4, h5, h6 {
+  /* Use the Poppins font for all headings */
+  font-family: var(--font-heading);
+
+  /* Bold weight — makes headings stand out */
+  font-weight: 700;
+
+  /* Tight line-height for headings (they look better more compact than body text) */
+  line-height: 1.15;
+
+  /* Very slightly tighten the space between individual letters */
+  letter-spacing: -0.01em;
+
+  /* Use the near-black secondary color for headings */
+  color: var(--color-secondary);
+}
+
+/* Individual heading sizes — each line sets the font-size for one heading level */
+h1 { font-size: var(--fs-4xl); }  /* Biggest — 60px on desktop */
+h2 { font-size: var(--fs-3xl); }  /* 44px */
+h3 { font-size: var(--fs-2xl); }  /* 32px */
+h4 { font-size: var(--fs-xl); }   /* 24px */
+
+/* Paragraphs — uses the muted grey color for a lighter, easier-to-read tone */
+p {
+  color: var(--color-text-muted);
+}
+
+/* ── .eyebrow class ──────────────────────────────────────────────────────── */
+/* An "eyebrow" is the small label that appears ABOVE a section heading,
+   e.g. "MY WORK" above the "Projects" heading.
+   This class can be added to any element: <span class="eyebrow">My Work</span> */
+.eyebrow {
+  font-family: var(--font-heading);     /* Poppins */
+  font-size: var(--fs-sm);             /* Small — 14px */
+  font-weight: 600;                    /* Semi-bold */
+  letter-spacing: 0.14em;             /* Spread letters wide — a classic label style */
+  text-transform: uppercase;           /* Force ALL CAPS regardless of HTML casing */
+  color: var(--color-primary);         /* Brand green */
+}
+
+/* ── RESPONSIVE HEADING SIZES (Mobile) ───────────────────────────────────── */
+/* When the screen is 768px wide or less (tablets / phones),
+   reduce heading sizes so they don't overflow or look too large */
+@media (max-width: 768px) {
+  h1 { font-size: var(--fs-3xl); }  /* 44px on mobile (was 60px) */
+  h2 { font-size: var(--fs-2xl); }  /* 32px on mobile (was 44px) */
+  h3 { font-size: var(--fs-xl); }   /* 24px on mobile (was 32px) */
+}
+
+
+/* ==========================================================================
+   SECTION 5 — LAYOUT HELPERS
+   ==========================================================================
+   Reusable layout classes applied directly in the HTML.
+   ========================================================================== */
+
+/* ── .container ─────────────────────────────────────────────────────────── */
+/* Wrap page content in a centered column that never grows wider than 1200px.
+   Usage: <div class="container"> ... your content ... </div> */
+.container {
+  /* Stretch to fill whatever space is available horizontally */
+  width: 100%;
+
+  /* But never wider than 1200px (the value of --container-max) */
+  max-width: var(--container-max);
+
+  /* "margin-inline: auto" is shorthand for margin-left: auto + margin-right: auto.
+     This centres the container horizontally on the page. */
+  margin-inline: auto;
+
+  /* Add equal horizontal padding on both sides (left and right).
+     "padding-inline" is shorthand for padding-left + padding-right. */
+  padding-inline: var(--space-4); /* 24px on each side */
+}
+
+/* ── .section ────────────────────────────────────────────────────────────── */
+/* Add generous vertical breathing room above and below a page section.
+   Usage: <section class="section"> ... </section> */
+.section {
+  /* "padding-block" is shorthand for padding-top + padding-bottom.
+     Uses --space-8 = 6rem = 96px on desktop — plenty of breathing room. */
+  padding-block: var(--space-8);
+}
+
+/* On mobile screens, reduce the vertical padding so sections aren't too spaced out */
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--space-6); /* 3rem = 48px on mobile */
+  }
+}
+
+
+/* ==========================================================================
+   SECTION 6 — FOCUS STYLES (Accessibility)
+   ==========================================================================
+   When a user navigates with a keyboard (Tab key), the currently focused
+   element should be clearly visible. This helps people who can't use a mouse.
+   ========================================================================== */
+
+/* ":focus-visible" only shows the outline when the element is focused
+   via keyboard — NOT when clicked with a mouse (so it doesn't look messy
+   during normal mouse use). */
+:focus-visible {
+  /* Draw a 2px solid gold outline around the focused element */
+  outline: 2px solid var(--color-accent);
+
+  /* Push the outline 3px away from the element's edge so it doesn't overlap content */
+  outline-offset: 3px;
+
+  /* Give the outline slightly rounded corners so it matches the design */
+  border-radius: var(--radius-sm);
+}
+
+
+/* ==========================================================================
+   SECTION 7 — UTILITY CLASSES
+   ==========================================================================
+   Small, single-purpose classes you can add to any element in your HTML.
+   ========================================================================== */
+
+/* Set the text color to the brand green */
+.text-primary { color: var(--color-primary); }
+
+/* Set the text color to gold */
+.text-accent  { color: var(--color-accent); }
+
+/* ── .sr-only — Screen-Reader Only ─────────────────────────────────────── */
+/* This hides an element VISUALLY (sighted users won't see it),
+   but screen readers (used by blind/visually-impaired users) CAN still
+   read it. Great for adding extra context without cluttering the UI.
+   Example: <span class="sr-only">Close menu</span> inside an icon-only button */
+.sr-only {
+  /* Pull the element out of normal flow and position it absolutely */
+  position: absolute;
+
+  /* Make it 1px wide and 1px tall — essentially invisible */
+  width: 1px;
+  height: 1px;
+
+  /* Remove any padding that might make it slightly visible */
+  padding: 0;
+
+  /* Negative margin pulls it off-screen */
+  margin: -1px;
+
+  /* Hide anything that would overflow the 1×1 box */
+  overflow: hidden;
+
+  /* "clip" cuts the visible area to a zero-sized rectangle — nothing shows */
+  clip: rect(0, 0, 0, 0);
+
+  /* Prevent text from wrapping onto another line (which could make it visible) */
+  white-space: nowrap;
+
+  /* Remove any border */
+  border: 0;
+}
+
+
+/* ==========================================================================
+   SECTION 8 — SCROLL-REVEAL ANIMATION
+   ==========================================================================
+   Elements with the attribute data-reveal="" start invisible and slightly
+   shifted downward. When animations.js detects that they scroll into view,
+   it adds the class "is-visible", which triggers a smooth fade-in.
+   ========================================================================== */
+
+/* Select any HTML element that has a "data-reveal" attribute.
+   Example: <div data-reveal> ... </div> */
+[data-reveal] {
+  /* Start completely invisible (opacity 0 = fully transparent) */
+  opacity: 0;
+
+  /* Shift the element 24px downward from its real position */
+  transform: translateY(24px);
+
+  /* Animate both opacity and transform smoothly over 0.7 seconds
+     when their values change (i.e., when .is-visible is added) */
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+/* When JavaScript adds the "is-visible" class, these styles kick in */
+[data-reveal].is-visible {
+  /* Fade the element fully into view */
+  opacity: 1;
+
+  /* Slide it back to its original position (no offset) */
+  transform: translateY(0);
+}
+
+/* If the user has "Reduce Motion" enabled, skip the animation entirely —
+   show the element immediately at full opacity with no movement */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;        /* Fully visible from the start */
+    transform: none;   /* No position offset */
+    transition: none;  /* No animation at all */
+  }
+}
