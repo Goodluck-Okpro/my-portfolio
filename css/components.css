@@ -3,150 +3,260 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Navbar
-   -------------------------------------------------------------------------- */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
-  transition: box-shadow var(--transition-base);
-}
-
-.navbar.is-scrolled {
-  box-shadow: var(--shadow-sm);
-}
-
-.navbar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 76px;
-}
-
-.navbar__brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: var(--fs-lg);
-  color: var(--color-secondary);
-}
-
-.navbar__brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: var(--color-white);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: var(--fs-sm);
-}
-
-.navbar__links {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-}
-
-.navbar__link {
-  position: relative;
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: var(--fs-sm);
-  color: var(--color-secondary);
-  padding-block: var(--space-2);
-  transition: color var(--transition-fast);
-}
-
-.navbar__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-accent);
-  transition: width var(--transition-fast);
-}
-
-.navbar__link:hover,
-.navbar__link.is-active {
-  color: var(--color-primary);
-}
-
-.navbar__link:hover::after,
-.navbar__link.is-active::after {
-  width: 100%;
-}
-
-.navbar__toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 40px;
-  height: 40px;
-}
-
-.navbar__toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--color-secondary);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
-}
-
-.navbar__toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.navbar__toggle[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-.navbar__toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-@media (max-width: 860px) {
-  .navbar__toggle {
-    display: flex;
-  }
-
-  .navbar__links {
-    position: fixed;
-    inset: 76px 0 0 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    background: var(--color-white);
-    padding: var(--space-4);
-    transform: translateY(-12px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity var(--transition-base), transform var(--transition-base);
-  }
-
-  .navbar__links.is-open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .navbar__link {
+     Navbar
+     -------------------------------------------------------------------------- */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     width: 100%;
-    padding-block: var(--space-3);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
     border-bottom: 1px solid var(--color-border);
+    transition: box-shadow var(--transition-base), background var(--transition-base);
+    /* isolate creates a new stacking context so nothing on the page
+       can slip between the navbar's own layers */
+    isolation: isolate;
   }
-}
+ 
+  .navbar.is-scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-sm);
+  }
+ 
+  .navbar__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--navbar-height);
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-inline: var(--space-4);
+  }
+ 
+  .navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--fs-lg);
+    letter-spacing: -0.01em;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+ 
+  .navbar__brand:hover { opacity: 0.85; }
+ 
+  .navbar__brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    transition: transform var(--transition-fast);
+    flex-shrink: 0;
+  }
+ 
+  .navbar__brand:hover .navbar__brand-mark {
+    transform: scale(1.06) rotate(-4deg);
+  }
+ 
+  /* Links list — shared rules for desktop and mobile */
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+ 
+  .navbar__link {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.01em;
+    color: var(--color-secondary);
+    text-decoration: none;
+    padding-block: var(--space-2);
+    transition: color var(--transition-fast);
+  }
+ 
+  .navbar__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-fast) cubic-bezier(0.4, 0, 0.2, 1);
+  }
+ 
+  .navbar__link:hover,
+  .navbar__link.is-active {
+    color: var(--color-primary);
+  }
+ 
+  .navbar__link:hover::after,
+  .navbar__link.is-active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+ 
+  .navbar__link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+ 
+  .navbar__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-accent);
+    background: rgba(212, 178, 60, 0.08);
+    color: var(--color-secondary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+ 
+  /* Toggle button */
+  .navbar__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    flex-shrink: 0;
+  }
+ 
+  .navbar__toggle:hover { background: rgba(0, 0, 0, 0.05); }
+ 
+  .navbar__toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-secondary);
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+  }
+ 
+  .navbar__toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .navbar__toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .navbar__toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+ 
+  /* --------------------------------------------------------------------------
+     Mobile
+     -------------------------------------------------------------------------- */
+  @media (max-width: 860px) {
+    .navbar__toggle { display: flex; }
+ 
+    /* Overlay dims and blocks the page behind the panel */
+    .navbar__overlay {
+      position: fixed;
+      inset: var(--navbar-height) 0 0 0;
+      z-index: 998;
+      background: rgba(10, 20, 14, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-base), visibility 0s linear var(--transition-base);
+    }
+ 
+    .navbar__overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity var(--transition-base), visibility 0s;
+    }
+ 
+    .navbar__links {
+      position: fixed;
+      inset: var(--navbar-height) 0 0 auto;
+      z-index: 999;
+      width: min(320px, 84vw);
+      height: calc(100dvh - var(--navbar-height));
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--color-white);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-4);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateX(100%);
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform var(--transition-base), visibility 0s linear var(--transition-base);
+    }
+ 
+    .navbar__links.is-open {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+      transition: transform var(--transition-base), visibility 0s;
+    }
+ 
+    .navbar__link {
+      width: 100%;
+      padding-block: var(--space-3);
+      border-bottom: 1px solid var(--color-border);
+    }
+ 
+    /* underline effect doesn't make sense stacked full-width */
+    .navbar__link::after { display: none; }
+ 
+    .navbar__link:hover,
+    .navbar__link.is-active {
+      padding-inline-start: var(--space-2);
+    }
+ 
+    .navbar__cta {
+      margin-top: var(--space-4);
+      justify-content: center;
+    }
+ 
+    /* lock page scroll while the panel is open */
+    body.navbar-open {
+      overflow: hidden;
+    }
+  }
 
 /* --------------------------------------------------------------------------
    Buttons
