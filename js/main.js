@@ -53,23 +53,32 @@ function renderNavbar() {
           ${linksHTML}
         </ul>
       </div>
+      <div class="navbar__overlay" id="navOverlay"></div>
     </nav>
   `;
 
   // Mobile toggle
   const toggle = document.getElementById("navToggle");
   const links = document.getElementById("navLinks");
-  toggle.addEventListener("click", () => {
-    const isOpen = links.classList.toggle("is-open");
+  const overlay = document.getElementById("navOverlay");
+
+  function setMenuOpen(isOpen) {
+    links.classList.toggle("is-open", isOpen);
+    overlay.classList.toggle("is-open", isOpen);
+    document.body.classList.toggle("navbar-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  toggle.addEventListener("click", () => {
+    setMenuOpen(!links.classList.contains("is-open"));
   });
+
+  // Close mobile menu when tapping the dimmed backdrop
+  overlay.addEventListener("click", () => setMenuOpen(false));
 
   // Close mobile menu when a link is tapped
   links.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-      links.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    })
+    a.addEventListener("click", () => setMenuOpen(false))
   );
 
   // Sticky shadow on scroll
