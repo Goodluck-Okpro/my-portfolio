@@ -470,3 +470,23 @@
     align-items: center;
   }
 }
+
+/* ==========================================================================
+   GLOBAL MOBILE LAYOUT SAFEGUARDS
+   ========================================================================== */
+
+/* Prevent any grid or flex container from causing horizontal overflow */
+@media (max-width: 640px) {
+
+  /* Cards in a grid: ensure they never overflow */
+  .card {
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  /* Buttons should wrap nicely */
+  .btn {
+    white-space: normal;
+    word-break: break-word;
+  }
+}

@@ -6,22 +6,27 @@
     color: #fff;
     padding-top: calc(var(--nav-height) + 3.5rem);
     padding-bottom: 5rem;
+    /* Ensure the hero itself clips all decorative overflows */
+    max-width: 100vw;
   }
 
   .hero__numeral {
     position: absolute;
     top: 50%;
-    right: clamp(-4rem, -2vw, 2rem);
+    right: -2rem;
     transform: translateY(-50%);
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: clamp(16rem, 42vw, 34rem);
+    font-size: clamp(10rem, 30vw, 34rem);
     line-height: 1;
     color: rgba(255, 255, 255, 0.05);
     -webkit-text-stroke: 2px rgba(255, 215, 0, 0.08);
     pointer-events: none;
     user-select: none;
     z-index: 0;
+    /* Prevent the numeral from causing horizontal overflow */
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .hero__content { position: relative; z-index: 1; }
@@ -140,8 +145,8 @@
 
         position:absolute;
 
-        width:320px;
-        height:320px;
+        width: min(320px, 80%);
+        height: min(320px, 80%);
 
         border-radius:50%;
 
@@ -508,4 +513,91 @@
 .gallery-tile:hover .gallery-tile__label {
   transform: translateY(-2px);
   color: var(--color-accent);
+}
+
+/* ==========================================================================
+   HOME — MOBILE RESPONSIVE OVERRIDES
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* Hero section mobile adjustments */
+  .hero {
+    padding-top: calc(var(--nav-height) + 2rem);
+    padding-bottom: 3rem;
+  }
+
+  .hero__numeral {
+    font-size: clamp(8rem, 40vw, 14rem);
+    right: -1rem;
+    opacity: 0.6;
+  }
+
+  /* Stack hero content vertically */
+  .hero .container > div {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* Hide the portrait on mobile to save space and prevent overflow */
+  .hero__portrait {
+    display: none;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__cta .btn {
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Stat cards: 2-col grid on mobile */
+  .stat-card {
+    min-height: 140px;
+    padding: 1.25rem 1rem;
+  }
+
+  /* Gallery tiles: 2-col on mobile is fine, just ensure no overflow */
+  .gallery-tile {
+    min-width: 0;
+  }
+
+  /* Highlight rows should not cause overflow */
+  .highlight-row {
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .highlight-row > div {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+}
+
+/* On very small screens (320–480px), the 2-col grid of cards can be tight.
+   Force a single-column layout for stat cards and profile cards. */
+@media (max-width: 480px) {
+  /* The Tailwind grid-cols-2 on stat/profile rows — override to 1 col */
+  .stat-card,
+  .profile-card {
+    min-width: 0;
+  }
+
+  /* Reduce stat card value font size to prevent text overflow */
+  .stat-card__value {
+    font-size: 1.35rem;
+  }
+
+  /* Reduce card padding on very small screens */
+  .card {
+    padding: var(--space-4);
+  }
 }

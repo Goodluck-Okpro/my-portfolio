@@ -185,6 +185,9 @@ html {
   /* Prevents iOS Safari from automatically enlarging font sizes when
      the phone is rotated to landscape mode */
   -webkit-text-size-adjust: 100%;
+
+  /* Prevent horizontal scrollbar at the root level */
+  overflow-x: hidden;
 }
 
 /* ── ACCESSIBILITY: Respecting "Reduce Motion" System Preference ─────────── */
@@ -242,6 +245,9 @@ body {
 
   /* Prevent a horizontal scrollbar from appearing if content slightly overflows */
   overflow-x: hidden;
+
+  /* Constrain body to viewport width */
+  max-width: 100vw;
 }
 
 /* Styles for all images (<img> tags) */
@@ -395,6 +401,13 @@ p {
 @media (max-width: 768px) {
   .section {
     padding-block: var(--space-6); /* 3rem = 48px on mobile */
+  }
+}
+
+/* On very small screens, reduce container side padding */
+@media (max-width: 400px) {
+  .container {
+    padding-inline: var(--space-3); /* 16px on very small screens */
   }
 }
 
