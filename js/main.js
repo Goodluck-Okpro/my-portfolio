@@ -7,7 +7,7 @@
 // CONFIG — update these as your accounts/links go live
 // --------------------------------------------------------------------------
 const SITE_CONFIG = {
-  name: "Precious Uba",
+  name: "The Sniper",
   tagline: "Young Footballer • Striker • Future Professional",
   whatsappNumber: "2340000000000", // TODO: replace with real number, no + or leading 0s (country code + number)
   socials: {

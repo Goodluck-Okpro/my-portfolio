@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ===== HEAD BOILERPLATE (see head-boilerplate.html) ===== -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About | The Sniper</title>
+<meta name="description" content="The story so far — Goodluck Okpro, Nigerian schoolboy footballer, striker (No. 9), academy player and future professional." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          green: { DEFAULT: "#0B6E4F", dark: "#084d38", light: "#0f8a63" },
+          ink: "#111111",
+          gold: { DEFAULT: "#FFD700", dim: "#c9ab1f" },
+          paper: "#F5F5F5"
+        },
+        fontFamily: {
+          heading: ["Poppins", "sans-serif"],
+          body: ["Inter", "sans-serif"]
+        }
+      }
+    }
+  };
+</script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<link rel="stylesheet" href="css/globals.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/pages.css" />
+<link rel="stylesheet" href="css/about.css" />
+
+</head>
+<body data-page="about">
+
+<header id="site-header"></header>
+
+<main id="main">
+
+  <!-- ============================= PAGE INTRO ============================= -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head section-head--center" data-aos="fade-up">
+        <div class="section-head__content">
+          <span class="eyebrow">About Me</span>
+          <h1 class="section-head__title">The Story So Far</h1>
+          <p class="section-head__description">
+            A young striker from Delta State, working every day to turn a school-team dream
+            into a professional career.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= BIOGRAPHY ============================= -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <span class="eyebrow">Who I Am</span>
+          <h2 class="mt-2">A striker in the making</h2>
+          <p class="text-black/70 mt-4">
+            I'm Goodluck Okpro, a striker from Delta State, Nigeria, currently a student at
+            Faith Academy, Warri. Football has been my passion since I first stepped onto a
+            school pitch — I live for the moment the ball hits the back of the net.
+          </p>
+          <p class="text-black/70 mt-4">
+            I joined my school football team in JSS2 and have since scored 4 goals across
+            multiple matches. In June 2026, I took the next step in my journey by joining a
+            football academy, where I train every day to sharpen my game and grow closer to
+            my dream of becoming a professional footballer.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4" data-aos="fade-left" data-aos-delay="100">
+          <div class="card">
+            <i data-lucide="school" class="text-green" style="width:26px;height:26px;" aria-hidden="true"></i>
+            <h3 class="mt-3 text-base">School</h3>
+            <p class="text-sm text-black/60 mb-0">Faith Academy, Warri</p>
+          </div>
+          <div class="card">
+            <i data-lucide="shield" class="text-green" style="width:26px;height:26px;" aria-hidden="true"></i>
+            <h3 class="mt-3 text-base">Academy</h3>
+            <p class="text-sm text-black/60 mb-0">Joined June 2026</p>
+          </div>
+          <div class="card">
+            <i data-lucide="footprints" class="text-green" style="width:26px;height:26px;" aria-hidden="true"></i>
+            <h3 class="mt-3 text-base">Position</h3>
+            <p class="text-sm text-black/60 mb-0">Striker — Top 9</p>
+          </div>
+          <div class="card">
+            <i data-lucide="star" class="text-green" style="width:26px;height:26px;" aria-hidden="true"></i>
+            <h3 class="mt-3 text-base">Inspiration</h3>
+            <p class="text-sm text-black/60 mb-0">Cristiano Ronaldo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= TIMELINE ============================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center" data-aos="fade-up">
+        <div class="section-head__content">
+          <span class="eyebrow">The Journey</span>
+          <h2 class="section-head__title">How It Started</h2>
+        </div>
+      </div>
+
+      <ol class="timeline" data-aos="fade-up" data-aos-delay="100">
+        <li class="timeline-item">
+          <span class="timeline-item__dot"></span>
+          <h3>Started Playing Football</h3>
+          <p class="text-sm text-black/60 mb-0">First touches of the ball, first love of the game.</p>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-item__dot"></span>
+          <h3>Joined School Team (JSS2)</h3>
+          <p class="text-sm text-black/60 mb-0">Earned my place on the Faith Academy school football team.</p>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-item__dot"></span>
+          <h3>Played Competitive Matches</h3>
+          <p class="text-sm text-black/60 mb-0">Tested my skills against other schools, gaining match experience.</p>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-item__dot"></span>
+          <h3>Scored 4 Goals</h3>
+          <p class="text-sm text-black/60 mb-0">Found the back of the net across multiple matches.</p>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-item__dot"></span>
+          <h3>Joined a Football Academy</h3>
+          <p class="text-sm text-black/60 mb-0">June 2026 — took the next step toward a professional career.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================= FOOTBALL PROFILE ============================= -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head section-head--center" data-aos="fade-up">
+        <div class="section-head__content">
+          <span class="eyebrow">Player Profile</span>
+          <h2 class="section-head__title">Football Profile</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card profile-card">
+          <div class="profile-card__icon"><i data-lucide="target" aria-hidden="true"></i></div>
+          <div class="profile-card__value">Striker (No. 9)</div>
+          <div class="profile-card__label">Position</div>
+        </div>
+        <div class="card profile-card">
+          <div class="profile-card__icon"><i data-lucide="footprints" aria-hidden="true"></i></div>
+          <div class="profile-card__value">Right</div>
+          <div class="profile-card__label">Preferred Foot</div>
+        </div>
+        <div class="card profile-card">
+          <div class="profile-card__icon"><i data-lucide="flag" aria-hidden="true"></i></div>
+          <div class="profile-card__value">4</div>
+          <div class="profile-card__label">Goals</div>
+        </div>
+        <div class="card profile-card">
+          <div class="profile-card__icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
+          <div class="profile-card__value">Joined 2026</div>
+          <div class="profile-card__label">Academy</div>
+        </div>
+        <div class="card profile-card">
+          <div class="profile-card__icon"><i data-lucide="school" aria-hidden="true"></i></div>
+          <div class="profile-card__value">Faith Academy</div>
+          <div class="profile-card__label">School</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= SKILLS ============================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center" data-aos="fade-up">
+        <div class="section-head__content">
+          <span class="eyebrow">Ability</span>
+          <h2 class="section-head__title">Skills</h2>
+        </div>
+      </div>
+
+      <div class="skills-list" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-item">
+          <div class="skill-item__head"><span>Finishing</span><span>95%</span></div>
+          <div class="skill-bar"><div class="skill-bar__fill" data-value="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__head"><span>Pace</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-bar__fill" data-value="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__head"><span>Dribbling</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-bar__fill" data-value="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__head"><span>Passing</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-bar__fill" data-value="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__head"><span>Positioning</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-bar__fill" data-value="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__head"><span>Teamwork</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-bar__fill" data-value="90"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CTA ============================= -->
+  <section class="section section--dark cta-section">
+    <div class="container">
+      <div class="cta-card" data-aos="zoom-in">
+        <span class="eyebrow">Let's Connect</span>
+        <h2 class="cta-card__title">Follow My Football Journey</h2>
+        <p class="cta-card__description">
+          Whether you're a coach, scout, teammate, or simply a football fan,
+          I'd love to connect. Follow my progress, share advice, or reach out
+          to talk about the beautiful game.
+        </p>
+        <div class="cta-card__actions">
+          <a href="contact.html" class="btn btn--accent">Get In Touch</a>
+          <a href="gallery.html" class="btn btn--outline">View Gallery</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="js/main.js"></script>
+<script>
+  // ---- Skill bar fill on scroll into view (page-specific) ----
+  (function animateSkillBars() {
+    const bars = document.querySelectorAll(".skill-bar__fill");
+    if (!bars.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          el.style.width = el.dataset.value + "%";
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    bars.forEach((bar) => observer.observe(bar));
+  })();
+</script>
+</body>
+</html>
