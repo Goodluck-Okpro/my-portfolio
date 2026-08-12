@@ -186,8 +186,8 @@ html {
      the phone is rotated to landscape mode */
   -webkit-text-size-adjust: 100%;
 
-  /* Prevent horizontal scrollbar at the root level */
-  overflow-x: hidden;
+  /* Prevent horizontal scrollbar at the root level without breaking position: sticky */
+  overflow-x: clip;
 }
 
 /* ── ACCESSIBILITY: Respecting "Reduce Motion" System Preference ─────────── */
@@ -244,7 +244,7 @@ body {
   background-color: var(--color-bg);
 
   /* Prevent a horizontal scrollbar from appearing if content slightly overflows */
-  overflow-x: hidden;
+  overflow-x: clip;
 
   /* Constrain body to viewport width */
   max-width: 100vw;

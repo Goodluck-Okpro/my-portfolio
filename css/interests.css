@@ -1,0 +1,590 @@
+/* ==========================================================================
+   INTERESTS.CSS — Page-specific styles for interests.html
+   ========================================================================== */
+
+
+/* ==========================================================================
+   INTERESTS SECTION WRAPPER
+   ========================================================================== */
+
+.interests-section {
+  overflow: hidden;
+}
+
+
+/* ==========================================================================
+   INTEREST FEATURE  (Football — On The Pitch)
+   Two-column layout: big visual on the left, content on the right
+   ========================================================================== */
+
+.interest-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+/* ── Visual panel ──────────────────────────────────────────────────────── */
+
+.interest-feature__visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+
+  min-height: 340px;
+  border-radius: var(--radius-lg);
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(15, 143, 102, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      var(--color-secondary) 0%,
+      #0d1a13 100%
+    );
+
+  border: 1px solid rgba(11, 110, 79, 0.25);
+  overflow: hidden;
+}
+
+/* subtle diagonal stripe texture */
+.interest-feature__visual::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 40px,
+    rgba(255, 255, 255, 0.025) 40px 44px
+  );
+  pointer-events: none;
+}
+
+.interest-feature__number {
+  font-family: var(--font-heading);
+  font-size: clamp(6rem, 14vw, 10rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-light),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  position: relative;
+  z-index: 1;
+}
+
+.interest-feature__icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+
+  background: rgba(11, 110, 79, 0.3);
+  border: 1px solid rgba(11, 110, 79, 0.5);
+
+  color: var(--color-accent);
+}
+
+.interest-feature__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.interest-feature__badge {
+  position: relative;
+  z-index: 1;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.45rem 1.1rem;
+
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  background: rgba(255, 215, 0, 0.1);
+
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+}
+
+/* ── Content panel ─────────────────────────────────────────────────────── */
+
+.interest-feature__content h3 {
+  margin-block: var(--space-3) var(--space-4);
+}
+
+.interest-feature__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.interest-feature__tags span {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+
+  border-radius: 999px;
+  border: 1.5px solid var(--color-primary);
+  background: rgba(11, 110, 79, 0.06);
+
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.interest-feature__tags span:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+
+/* ==========================================================================
+   INSPIRATION CARD  (Favourite Player)
+   ========================================================================== */
+
+.inspiration-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-6);
+
+  max-width: 860px;
+  margin-inline: auto;
+  padding: var(--space-7);
+
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 215, 0, 0.18);
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 215, 0, 0.08),
+      transparent 50%
+    ),
+    linear-gradient(
+      145deg,
+      var(--color-secondary) 0%,
+      #0d1a13 100%
+    );
+
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.inspiration-card::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 42px,
+    rgba(255, 255, 255, 0.02) 42px 46px
+  );
+  pointer-events: none;
+}
+
+.inspiration-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* icon */
+.inspiration-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.inspiration-card__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* content */
+.inspiration-card__label {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.inspiration-card__content h3 {
+  color: var(--color-white);
+  margin: 0 0 var(--space-3);
+}
+
+.inspiration-card__content p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
+  margin: 0;
+  max-width: 38rem;
+}
+
+/* big number */
+.inspiration-card__number {
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.5),
+    rgba(255, 215, 0, 0.12)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  flex-shrink: 0;
+  user-select: none;
+}
+
+
+/* ==========================================================================
+   INTEREST GRID  (Other Sports)
+   ========================================================================== */
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-5);
+}
+
+.interest-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.interest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.interest-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: rgba(11, 110, 79, 0.08);
+  color: var(--color-primary);
+
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.interest-card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.interest-card:hover .interest-card__icon {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.interest-card__number {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.interest-card h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-xl);
+}
+
+.interest-card p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* Featured card variant — highlighted with green tint */
+.interest-card--featured {
+  border-color: var(--color-primary);
+  background: linear-gradient(
+    145deg,
+    rgba(11, 110, 79, 0.04),
+    rgba(11, 110, 79, 0.01)
+  );
+}
+
+.interest-card--featured .interest-card__icon {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.interest-card--featured .interest-card__number {
+  color: var(--color-primary);
+}
+
+
+/* ==========================================================================
+   GAMING GRID  (Game Cards)
+   ========================================================================== */
+
+.gaming-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+}
+
+.game-card {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: var(--space-6);
+  min-height: 340px;
+  border-radius: var(--radius-md);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0d1410;
+
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary-light);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(11, 110, 79, 0.25);
+}
+
+/* Background image wrapper & dark gradient overlay */
+.game-card__bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.game-card__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+  filter: brightness(0.55) saturate(1.1);
+}
+
+.game-card:hover .game-card__bg-img {
+  transform: scale(1.08);
+  filter: brightness(0.75) saturate(1.2);
+}
+
+.game-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 18, 13, 0.45) 0%,
+    rgba(10, 18, 13, 0.82) 45%,
+    rgba(10, 18, 13, 0.98) 100%
+  );
+}
+
+/* Content layer over background */
+.game-card__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  height: 100%;
+  flex: 1;
+}
+
+/* header container (icon + category) */
+.game-card__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* icon */
+.game-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: rgba(11, 110, 79, 0.2);
+  border: 1px solid rgba(11, 110, 79, 0.35);
+  color: var(--color-primary-light);
+
+  position: relative;
+  z-index: 1;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.game-card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.game-card:hover .game-card__icon {
+  background: rgba(11, 110, 79, 0.4);
+  border-color: var(--color-primary-light);
+}
+
+/* category label */
+.game-card__category {
+  position: relative;
+  z-index: 1;
+
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+/* title */
+.game-card h3 {
+  position: relative;
+  z-index: 1;
+  color: var(--color-white);
+  margin: 0;
+  font-size: var(--fs-xl);
+}
+
+/* description */
+.game-card p {
+  position: relative;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* short tag badge */
+.game-card__tag {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  background: rgba(255, 215, 0, 0.07);
+
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+
+  margin-top: auto;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* Tablet */
+@media (max-width: 860px) {
+  .interest-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .interest-feature__visual {
+    min-height: 260px;
+  }
+
+  .inspiration-card {
+    grid-template-columns: auto 1fr;
+    padding: var(--space-6);
+  }
+
+  .inspiration-card__number {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .inspiration-card {
+    grid-template-columns: 1fr;
+    padding: var(--space-5);
+    gap: var(--space-4);
+  }
+
+  .interest-feature__tags {
+    gap: var(--space-2);
+  }
+
+  .gaming-grid,
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+}

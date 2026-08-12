@@ -129,13 +129,34 @@ function buildWhatsAppLink(message) {
 }
 
 // --------------------------------------------------------------------------
+// FLOATING SCROLL TO TOP BUTTON
+// --------------------------------------------------------------------------
+function renderScrollToTop() {
+  const btn = document.createElement("button");
+  btn.id = "backToTopBtn";
+  btn.className = "back-to-top-floating";
+  btn.setAttribute("aria-label", "Scroll to top");
+  btn.innerHTML = `<i data-lucide="arrow-up"></i>`;
+  document.body.appendChild(btn);
+
+  window.addEventListener("scroll", () => {
+    btn.classList.toggle("is-visible", window.scrollY > 300);
+  });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// --------------------------------------------------------------------------
 // INIT
 // --------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   renderNavbar();
   renderFooter();
+  renderScrollToTop();
 
-  // Lucide icons — call after any dynamic content (like the navbar/footer) is in the DOM
+  // Lucide icons — call after any dynamic content (like navbar/footer/backToTop) is in the DOM
   if (window.lucide) {
     window.lucide.createIcons();
   }
