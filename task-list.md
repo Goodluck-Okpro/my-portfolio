@@ -55,12 +55,12 @@
 - [ ] Structure that makes it easy to drop in new images/categories later
 
 ## Phase 7 — Contact Page (`contact.html`)
-- [ ] Contact form (Name, Email, Message) — client-side validation
-- [ ] Wire form to WhatsApp click-to-chat: on submit, build a `wa.me/<your-number>?text=...` link from the form fields (JS `encodeURIComponent`) and open it so the message lands in your WhatsApp
-- [ ] Add your WhatsApp number as a config variable in `js/main.js` (easy to update later)
-- [ ] Show a small note near the form: "This opens WhatsApp — just hit send!" so visitors aren't confused by the extra tap
-- [ ] "Challenge Me" section (DLS, FC Mobile, COD Mobile) — each button can also deep-link to WhatsApp with a pre-filled challenge message
-- [ ] Social media placeholder links
+- [x] Contact form (Name, Email/Contact, Inquiry Type, Message) — client-side validation
+- [x] Wire form to WhatsApp click-to-chat: builds structured WhatsApp link and opens chat automatically
+- [x] WhatsApp number config variable in `js/main.js` (`SITE_CONFIG.whatsappNumber`)
+- [x] Interactive helper notice: "Tapping send compiles your message and opens WhatsApp — just hit send!"
+- [x] "Challenge Me" gaming section (DLS, FC Mobile, eFootball, Roblox) — deep-linked to WhatsApp with custom challenge messages
+- [x] Social media placeholder links
 
 ## Phase 8 — Animations & Interactions
 - [ ] Fade-in sections on scroll (AOS or GSAP ScrollTrigger)
