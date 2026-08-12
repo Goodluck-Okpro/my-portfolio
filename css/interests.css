@@ -179,21 +179,10 @@
   padding: var(--space-7);
 
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 215, 0, 0.18);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: var(--color-secondary);
 
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(255, 215, 0, 0.08),
-      transparent 50%
-    ),
-    linear-gradient(
-      145deg,
-      var(--color-secondary) 0%,
-      #0d1a13 100%
-    );
-
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(255, 215, 0, 0.1);
   overflow: hidden;
   position: relative;
 }
@@ -208,6 +197,39 @@
     rgba(255, 255, 255, 0.02) 42px 46px
   );
   pointer-events: none;
+}
+
+/* Background image & gradient overlay */
+.inspiration-card__bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.inspiration-card__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
+  filter: brightness(0.45) saturate(1.15);
+}
+
+.inspiration-card:hover .inspiration-card__bg-img {
+  transform: scale(1.06);
+  filter: brightness(0.6) saturate(1.25);
+}
+
+.inspiration-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 15, 12, 0.88) 0%,
+    rgba(10, 15, 12, 0.75) 50%,
+    rgba(10, 15, 12, 0.92) 100%
+  );
 }
 
 .inspiration-card > * {
